@@ -5,32 +5,48 @@
   <title>PokemonsOrIt</title>
 </head>
 <body>
-  <button>Rozpocznij grę</button>
+  <button onclick="startQuiz()">Rozpocznij grę</button>
   <h1></h1>
   <button>Pokemon</button>
   <button>It</button>
   <p id="ok">Good answer</p>
   <p id="wrong">Bad answer</p>
   <button>Next Question</button>
+
   <script>
     let quizId;
-      function startQuiz() {
-        const requestPromise = fetch("http://it-pokemon.webappcraft.com/quiz");
+
+    function startQuiz() {
+        const options = {method: "POST"}
+        const requestPromise =
+            fetch("http://it-pokemon.webappcraft.com/quiz", options);
         requestPromise.then((response) => {
             response.json().then((json) => {
                 const quiz = {
                     id: json.id,
                     questionCount: json.questionCount
-                }
+                };
                 quizId = json.id;
-            })
+                getQuestion();
+            });
         });
     }
-function getQuestion() {
-        //const requestPromise = fetch("http://it-pokemon.webappcraft.com//quiz/"+quizId + "/question");
-        const requestPromise = fetch(`http://it-pokemon.webappcraft.com//quiz/${quizId}/question`);
 
-}
+    function getQuestion() {
+        //const requestPromise = fetch("http://it-pokemon.webappcraft.com//quiz/"+quizId + "/question");
+        const requestPromise = fetch(`http://it-pokemon.webappcraft.com/quiz/${quizId}/question`);
+        requestPromise.then((response) => {
+            response.json().then((json) => {
+                const question = {
+                    name: json.name,
+                    done: json.done
+                };
+                document
+                    .getElementsByTagName("h1")[0]
+                    .textContent = question.name;
+            });
+        });
+    }
 
 
 
