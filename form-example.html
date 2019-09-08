@@ -12,18 +12,18 @@
       <th>Wiek</th>
       <th>Obywatelstwo</th>
     </tr>
-    <tr>
-      <td>Jan</td>
-      <td>Nowak</td>
-      <td>35</td>
-      <td>polskie</td>
-    </tr>
-    <tr>
-      <td>John</td>
-      <td>Smith</td>
-      <td>29</td>
-      <td>british</td>
-    </tr>
+    <!--<tr>-->
+      <!--<td>Jan</td>-->
+      <!--<td>Nowak</td>-->
+      <!--<td>35</td>-->
+      <!--<td>polskie</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>John</td>-->
+      <!--<td>Smith</td>-->
+      <!--<td>29</td>-->
+      <!--<td>british</td>-->
+    <!--</tr>-->
   </table>
 
   <hr />
@@ -53,60 +53,7 @@
   </form>
 
 
-  <script>
-    //alert("Hello World");
-    console.log("Hello World");
-
-    function sendFormToTable() {
-        const userData = getUserDataFromForm();
-        addUserRowToTable(userData);
-        clearForm();
-    }
-
-    function getUserDataFromForm() {
-        const name = document.getElementById("name").value;
-        const surname = document.getElementById("surname").value;
-        const age = document.getElementById("age").value;
-        const nationality = document.getElementById("nationality").value;
-        return {
-            name: name,
-            surname: surname,
-            age: age,
-            nationality: nationality,
-        };
-    }
-
-    function addUserRowToTable(userData) {
-        const trElement = document.createElement("tr");
-
-        const nameTdElement = document.createElement("td");
-        nameTdElement.textContent = userData.name;
-        trElement.appendChild(nameTdElement);
-
-        const surnameTdElement = document.createElement("td");
-        surnameTdElement.textContent = userData.surname;
-        trElement.appendChild(surnameTdElement);
-
-        const ageTdElement = document.createElement("td");
-        ageTdElement.textContent = userData.age;
-        trElement.appendChild(ageTdElement);
-
-        const nationalityTdElement = document.createElement("td");
-        nationalityTdElement.textContent = userData.nationality;
-        trElement.appendChild(nationalityTdElement);
-
-        //document.getElementsByTagName("table")[0].appendChild(trElement);
-        document.getElementById("user-list").appendChild(trElement);
-    }
-
-    function clearForm() {
-        document.getElementById("name").value = "";
-        document.getElementById("surname").value = "";
-        document.getElementById("age").value = undefined;
-        document.getElementById("nationality").value = "";
-    }
-
-  </script>
+  <script src="form-example.js"></script>
 <!--
  <tr>
     <td>name</td>
