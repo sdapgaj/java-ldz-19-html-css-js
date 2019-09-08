@@ -7,17 +7,18 @@
 <body>
   <button onclick="startQuiz()">Rozpocznij grę</button>
   <h1></h1>
-  <button>Pokemon</button>
-  <button>It</button>
+  <button onclick="answer(0)">Pokemon</button>
+  <button onclick="answer(1)">It</button>
   <p id="ok">Good answer</p>
   <p id="wrong">Bad answer</p>
-  <button>Next Question</button>
+  <button onclick="getQuestion()">Next Question</button>
 
   <script>
     let quizId;
 
     function startQuiz() {
-        const options = {method: "POST"}
+
+        const options = { method: "POST" };
         const requestPromise =
             fetch("http://it-pokemon.webappcraft.com/quiz", options);
         requestPromise.then((response) => {
@@ -41,6 +42,9 @@
                     name: json.name,
                     done: json.done
                 };
+                if (json.done) {
+                    getScore();
+                }
                 document
                     .getElementsByTagName("h1")[0]
                     .textContent = question.name;
@@ -48,6 +52,36 @@
         });
     }
 
+    function answer(id) {
+        const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                "answer": id
+            })
+        };
+        const requestPromise = fetch(`http://it-pokemon.webappcraft.com/quiz/${quizId}/answer`, options);
+        requestPromise.then((response) => {
+            response.json().then((answer) => {
+                if (answer.correct) {
+                    alert("You are right!");
+                } else {
+                    alert("You are wrong!");
+                }
+                getQuestion();
+            });
+
+        });
+    }
+
+    function getScore() {
+        const requestPromise = fetch(`http://it-pokemon.webappcraft.com/quiz/${quizId}/score`);
+        requestPromise.then((responce) => {
+            responce.json().then((score) => {
+                alert("No more questions! Your score is: " + score.score + "/10");
+            });
+        });
+    }
 
 
   </script>
