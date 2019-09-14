@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Example</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css"></link>
+  <script>
+    function hideElement(id) {
+      const element = document.getElementById(id);
+      element.style.display = "none";
+      element.classList.add("hidden");
+    }
+  </script>
+
+</head>
+<body>
+<button type="button" class="btn btn-success">Success</button>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores nemo nulla sapiente vitae voluptate? Aperiam assumenda dolores earum excepturi incidunt magnam, minima, modi, officia optio quo sapiente veniam? Architecto, officia.
+  </p>
+  <div class="button magenta" id="test">
+    TEST
+  </div>
+    <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores nemo nulla sapiente vitae voluptate? Aperiam assumenda dolores earum excepturi incidunt magnam, minima, modi, officia optio quo sapiente veniam? Architecto, officia.
+  </p>
+  <div>
+    NOT BUTTON
+  </div>
+    <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores nemo nulla sapiente vitae voluptate? Aperiam assumenda dolores earum excepturi incidunt magnam, minima, modi, officia optio quo sapiente veniam? Architecto, officia.
+  </p>
+  <div class="button green" onclick="hideElement('test')">
+    BUTTON
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores nemo nulla sapiente vitae voluptate? Aperiam assumenda dolores earum excepturi incidunt magnam, minima, modi, officia optio quo sapiente veniam? Architecto, officia.
+  </p>
+</body>
+</html>
